@@ -6,7 +6,7 @@ const prettyDate2 = (timeleft) => {
     let time = timeleft % (60 * 60 * 1000 * 24);
     let hours = time / (60 * 60 * 1000) - 0.5;
     let minuts = ((time / (60 * 1000)) % 60) - 0.5;
-    let seconds = ((time / 1000) % 60) - 1;
+    let seconds = Math.abs(((time / 1000) % 60) - 1);
     array.push(hours.toFixed(0), minuts.toFixed(0), seconds.toFixed(0));
     return array;
 };
