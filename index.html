@@ -4,13 +4,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/style.css" />
-        <title>Is de avondklok al ingegaan?</title>
+        <title>Mag ik nog naar buiten?</title>
         <script src="./js/timer.js" defer></script>
     </head>
     <body>
-        <main class="box">
-            <h3>Is de avondklok al ingegaan?</h3>
-            <h2 class="green">Ja! Thuisblijven dus</h2>
+        <main>
+            <div class="question">
+                <h2>Mag ik nog naar buiten?</h2>
+            </div>
+            <div id="vrijheid">
+                <h1>Ja! Je mag nog naar buiten.</h1>
+                <h3>
+                    <br />Over <span id="tijd">..</span> <br />moet je binnen
+                    zijn!
+                </h3>
+            </div>
+
+            <div id="avondklok">
+                <h1>Nee!<br />Thuisblijven dus</h1>
+            </div>
         </main>
     </body>
 </html>
