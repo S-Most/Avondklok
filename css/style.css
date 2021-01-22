@@ -21,7 +21,7 @@ html main {
 }
 
 html main h2 {
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -32,13 +32,13 @@ html main #vrijheid {
 }
 
 html main #vrijheid h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   color: green;
   text-align: center;
 }
 
 html main #avondklok h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   color: red;
   text-align: center;
   margin-top: 3rem;
