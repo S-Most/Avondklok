@@ -1,16 +1,15 @@
 const vrijheidsEle = document.getElementById("vrijheid");
 const avondklokEle = document.getElementById("avondklok");
 
-function prettyDate2(timeleft) {
+const prettyDate2 = (timeleft) => {
     let array = [];
     let time = timeleft % (60 * 60 * 1000 * 24);
     let hours = time / (60 * 60 * 1000) - 0.5;
     let minuts = ((time / (60 * 1000)) % 60) - 0.5;
-    let seconds = (time / 1000) % 60;
+    let seconds = ((time / 1000) % 60) - 1;
     array.push(hours.toFixed(0), minuts.toFixed(0), seconds.toFixed(0));
-    console.log(array);
     return array;
-}
+};
 
 const showAvondklok = () => {
     avondklokEle.style.display = "flex";
@@ -37,12 +36,11 @@ const minutesLeft = (uur, minuten, id) => {
     curfewTime = new Date(2023, 0, 1, uur, minuten, 0, 0).getTime();
     let showTime = curfewTime - currentTime;
     let pushHTML = prettyDate2(showTime);
-    console.log(uur, minuten, id, pushHTML);
     document.getElementById(id).innerText =
         pushHTML[0] +
         "uur, " +
         pushHTML[1] +
-        "minuten, en " +
+        "minuten en " +
         pushHTML[2] +
         "seconden";
 };
@@ -62,5 +60,7 @@ const checkAvondklok = () => {
         return false;
     }
 };
-let setInterval = (checkTime(), 1000);
+
+setInterval(checkTime, 1000);
+
 checkTime();
