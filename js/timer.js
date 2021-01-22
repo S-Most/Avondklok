@@ -4,8 +4,8 @@ const avondklokEle = document.getElementById("avondklok");
 function prettyDate2(timeleft) {
     let array = [];
     let time = timeleft % (60 * 60 * 1000 * 24);
-    let hours = (time / (60 * 60 * 1000) - 0, 5);
-    let minuts = (((time / (60 * 1000)) % 60) - 0, 5);
+    let hours = time / (60 * 60 * 1000) - 0.5;
+    let minuts = ((time / (60 * 1000)) % 60) - 0.5;
     let seconds = (time / 1000) % 60;
     array.push(hours.toFixed(0), minuts.toFixed(0), seconds.toFixed(0));
     console.log(array);
@@ -24,19 +24,21 @@ const showVrijheid = () => {
 
 const checkTime = () => {
     if (checkAvondklok()) {
+        minutesLeft(4, 30, "tijd2");
         showAvondklok();
     } else {
-        minutesLeft();
+        minutesLeft(21, 0, "tijd1");
         showVrijheid();
     }
 };
 
-const minutesLeft = () => {
-    curTime = new Date().getTime();
-    _21Time = new Date(2022, 0, 1, 21, 0, 0, 0).getTime();
-    let showTime = _21Time - curTime;
+const minutesLeft = (uur, minuten, id) => {
+    currentTime = new Date().getTime();
+    curfewTime = new Date(2023, 0, 1, uur, minuten, 0, 0).getTime();
+    let showTime = curfewTime - currentTime;
     let pushHTML = prettyDate2(showTime);
-    document.getElementById("tijd").innerText =
+    console.log(uur, minuten, id, pushHTML);
+    document.getElementById(id).innerText =
         pushHTML[0] +
         "uur, " +
         pushHTML[1] +
@@ -55,10 +57,8 @@ const checkAvondklok = () => {
         (hours >= 0 && hours < 4) ||
         (hours == 4 && minutes <= 29)
     ) {
-        console.log("avondklok");
         return true;
     } else {
-        console.log("geen avondklok");
         return false;
     }
 };
